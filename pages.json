@@ -1,0 +1,28 @@
+{
+	"easycom": {
+		"autoscan": true
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabBar/index",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}
+	
+  ],
+	"globalStyle": {
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "D-APP",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		"disableScroll": false, 
+		"enablePullDownRefresh" : false,
+		"app-plus": {
+			"scrollIndicator": "none",
+			"bounce" : "none" //可选: 是否禁止iOS回弹和Android触顶触底的弧形阴影, 默认允许 (可配在 'globalStyle')
+		}
+	},
+	"uniIdRouter": {}
+}
