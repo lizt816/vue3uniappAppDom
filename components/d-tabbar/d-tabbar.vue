@@ -26,7 +26,7 @@
         @tap.stop="clickItemHandler(index)"
       >
         <!-- tabbar item的图片或者icon-->
-        <view :class="[itemButtonClass(index)]"
+        <view v-if="item.title" :class="[itemButtonClass(index)]"
           :style="[itemButtonStyle(index)]"
         >
           <image
@@ -39,15 +39,13 @@
               height: `${item.iconSize || iconSize}rpx`
             }"
           ></image>
-          <view
-            v-else
-            class="tn-tabbar__content__item__icon"
-            :class="[`tn-icon-${elIcon(index)}`,elIconColor(index, false)]"
-            :style="{
-              fontSize: `${item.iconSize || iconSize}rpx`,
-              color: elIconColor(index)
-            }"
-          ></view>
+          <view  v-else 
+					 class="tn-tabbar__content__item__icon"
+					 :class="[`tn-icon-${elIcon(index)}`,elIconColor(index, false)]" 
+					 :style="{ fontSize: `${item.iconSize || iconSize}rpx`,
+					  color: elIconColor(index) }"
+					 >
+						</view>
           
           <!-- 角标-->
       <!--    <tn-badge
@@ -64,7 +62,25 @@
             {{ $tn.number.formatNumberString(item.count) }}
           </tn-badge> -->
         </view>
-        
+        <view v-else  >
+					<image
+					  v-if="isImage(index)"
+					  :src="elIcon(index)"
+					  mode="scaleToFill"
+					  class="tn-tabbar__content__item__image"
+					  :style="{
+					    width: `${item.iconSize || iconSize}rpx`,
+					    height: `${item.iconSize || iconSize}rpx`
+					  }"
+					></image>
+					<view  v-else 
+					 class="tn-tabbar__content__item__icon "
+					 :class="[`tn-icon-${elIcon(index)}`,elIconColor(index, false)]" 
+					 :style="{ fontSize: `${item.iconSize || iconSize}rpx`,
+					  color: elIconColor(index),background:item.bg,padding:item.padding,borderRadius:item.borderRadius }"
+					 >
+						</view>
+				</view>
         <!-- tabbar item的文字-->
         <view
           class="tn-tabbar__content__item__text "
@@ -209,7 +225,7 @@
       // 点击时是否有动画
       animation: {
         type: Boolean,
-        default: false
+        default: true
       },
       // 点击时的动画模式
       animationMode: {
@@ -316,6 +332,11 @@
             }
           } else {
             clazz += 'tn-tabbar__content__item__button'
+						// console.log(this.list,'FileList');
+						// console.log(clazz,'clazz');
+							
+							
+						
             if (this.value === index) {
               clazz += ` tn-tabbar__content__item__button--animation--${this.animationMode}`
             }
@@ -493,13 +514,14 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        // justify-content: flex-end;
+				justify-content:center ;
         align-items: center;
         height: 100%;
         position: relative;
         
         &__button {
-          margin-bottom: 10rpx;
+          margin-bottom: 6rpx;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -545,7 +567,7 @@
           font-size: 26rpx;
           line-height: 28rpx;
           text-align: center;
-          margin-bottom: 10rpx;
+          // margin-bottom: 10rpx;
           z-index: 10;
           transition: all 0.2s ease-in-out;
         }
@@ -602,8 +624,6 @@
       transform: translateX(-50%) translateY(0) scale(1);
     }
   }
-  .tn-cool-bg-color-7{
-		color:red;
-	}
+
   /* 点击动画 end */
 </style>

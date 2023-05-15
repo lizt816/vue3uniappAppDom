@@ -8,17 +8,17 @@
 	</view>
 	
 	<view :style="{display: tabIndex === 1 ? '' : 'none'}"  v-show="tabberPageLoadFlag[1]">
-	<d-nvabar title="分类" background="#fff"></d-nvabar>
+		<d-nvabar title="分类" background="#fff"></d-nvabar>
 		<mescroll-item ref="mescrollItem1" :i="1" :index="tabIndex" >
 				<classification></classification>
 		</mescroll-item>
 	</view>
 
 	<view :style="{display: tabIndex === 2 ? '' : 'none'}"  v-show="tabberPageLoadFlag[2]">
-	<d-nvabar title="会员" background="#fff"></d-nvabar>
-	<mescroll-item ref="mescrollItem2" :i="2" :index="tabIndex">
-		<vip></vip>
-	</mescroll-item>
+		<d-nvabar title="会员" background="#fff"></d-nvabar>
+		<mescroll-item ref="mescrollItem2" :i="2" :index="tabIndex">
+			<vip></vip>
+		</mescroll-item>
 	</view>
 	
 	<view :style="{display: tabIndex === 3 ? '' : 'none'}"  v-show="tabberPageLoadFlag[3]">
@@ -92,9 +92,16 @@
 						inactiveIcon: 'honor',
 					},
 					{
-						title: '会员',
-						activeIcon: 'circle-lack',
-						inactiveIcon: 'circle-arrow',
+						title: '',
+						activeIcon: 'add',
+						inactiveIcon: 'add',
+						activeIconColor: '#fff',
+						inactiveIconColor: '#fff',
+						iconSize:50,
+						bg:'#58FFF5',
+						padding:'8rpx',
+						borderRadius:'20rpx'
+						
 					},
 					{
 						title: '购物车',
