@@ -291,8 +291,6 @@
 						onShow(isShow) {
 							// 显示隐藏的回调
 							vm.isShowToTop = isShow;
-							// vm.isShowToTop =  vm.topshow ;
-							console.log(isShow,'isShow');
 						}
 					},
 					// 派发上拉加载的回调

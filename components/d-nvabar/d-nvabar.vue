@@ -1,5 +1,5 @@
 <template>
-	<view class="AppBar" :style="fixed==true? `height:${ dsys.height+'px'};`:'height:0px' ">
+	<view class="AppBar" :style="fixed==true? `height:${ dsys.height+'px'};`:'height:0px' " @touchmove.stop.prevent="() => {}">
 		<view class="app"  :style="{ height: dsys.height + 'px',background:background }"  >
 			<view class="apppages" :style="{height: dsys.height + 'px', paddingTop: dsys.top + 'px'}">
 				<slot name="left"></slot>
@@ -40,7 +40,7 @@
 			},
 			// 标题
 			title:{
-				type:String,
+				type:[String,Number],
 				default(){
 					return ''
 				}

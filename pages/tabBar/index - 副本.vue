@@ -1,57 +1,49 @@
 <template>
 	<view class="content">
-	<view :style="{display: tabIndex === 0 ? '' : 'none'}" v-show="tabberPageLoadFlag[0]">
-		<d-nvabar title="首页" background="#fff"></d-nvabar>
-		<mescroll-item ref="mescrollItem0" :i="0" :index="tabIndex" >
+		<view :style="{display: currentIndex === 0 ? '' : 'none'}">
+			<d-nvabar title="首页" background="#fff"></d-nvabar>
+			<mescroll-item :i="0" :index="currentIndex" ref="mescrollItem0">
 				<home></home>
-		</mescroll-item>
-	</view>
-	
-	<view :style="{display: tabIndex === 1 ? '' : 'none'}"  v-show="tabberPageLoadFlag[1]">
-	<d-nvabar title="分类" background="#fff"></d-nvabar>
-		<mescroll-item ref="mescrollItem1" :i="1" :index="tabIndex" >
+			</mescroll-item>
+		</view>
+		
+		<view  :style="{display: currentIndex === 1 ? '' : 'none'}" >
+			<d-nvabar title="分类" background="#fff"></d-nvabar>
+			<mescroll-item :i="1" :index="currentIndex" ref="mescrollItem1">
 				<classification></classification>
-		</mescroll-item>
-	</view>
-
-	<view :style="{display: tabIndex === 2 ? '' : 'none'}"  v-show="tabberPageLoadFlag[2]">
-	<d-nvabar title="会员" background="#fff"></d-nvabar>
-	<mescroll-item ref="mescrollItem2" :i="2" :index="tabIndex">
-		<vip></vip>
-	</mescroll-item>
-	</view>
-	
-	<view :style="{display: tabIndex === 3 ? '' : 'none'}"  v-show="tabberPageLoadFlag[3]">
-		<d-nvabar title="购物车" background="#fff"></d-nvabar>
-		<mescroll-item ref="mescrollItem3" :i="3" :index="tabIndex">
-			<cart></cart>
-		</mescroll-item>
-	</view>
-	
-	<view :style="{display: tabIndex === 4 ? '' : 'none'}"  v-show="tabberPageLoadFlag[4]">
-		<d-nvabar title="我的" background="#fff"></d-nvabar>
-		<mescroll-item ref="mescrollItem4" :i="4" :index="tabIndex">
-			<my></my>
-		</mescroll-item>
-	</view>
-	
-		<d-tabbar 
-		v-model="tabIndex" 
-		:list="tabbarList" 
-		activeColor="#00aaff" 
-		inactiveColor="#000"
-		:safeAreaInsetBottom="true" 
-		activeIconColor="tn-cool-bg-color-7" 
-		inactiveIconColor="#000" 
-		@change="tabChange"
-		:fontSize="22" 
-		:iconSize="45" 
-		:shadow="false">
-		</d-tabbar>
+			</mescroll-item>
+		</view>
+		
+		<view :style="{display: currentIndex === 2 ? '' : 'none'}">
+			<d-nvabar title="会员" background="#fff"></d-nvabar>
+			<mescroll-item :i="2" :index="currentIndex" ref="mescrollItem2" >
+				<vip></vip>
+			</mescroll-item>
+		</view>
+		
+		<view  :style="{display: currentIndex === 3 ? '' : 'none'}">
+			<d-nvabar title="购物车" background="#fff"></d-nvabar>
+			<mescroll-item :i="3" :index="currentIndex" ref="mescrollItem3" >
+				<cart></cart>
+			</mescroll-item>
+		</view>
+		
+		<view  :style="{display: currentIndex === 4 ? '' : 'none'}">
+			<d-nvabar title="我的" background="#fff"></d-nvabar>
+			<mescroll-item :i="4" :index="currentIndex" ref="mescrollItem4" >
+				<my></my>
+			</mescroll-item>
+		</view>
+		
+		<!-- <view style="height:50px;"></view> -->
+	<!-- 	<view style="position: fixed;bottom: 0;">
+			<me-tabs v-model="currentIndex" :tabs="tabs" @change="tabChange" :tab-width="150"></me-tabs>
+		</view> -->
 
 
-
-
+		<d-tabbar v-model="currentIndex" :list="tabbarList" activeColor="#00aaff" inactiveColor="#000"
+			:safeAreaInsetBottom="true" activeIconColor="tn-cool-bg-color-7" inactiveIconColor="#000" @change="tabChange"
+			:fontSize="22" :iconSize="45" :shadow="false"></d-tabbar>
 	</view>
 </template>
 
@@ -133,7 +125,7 @@
 				if (selectPageFlag === false) {
 					this.tabberPageLoadFlag[index] = true
 				}
-				this.tabIndex = index
+				this.currentIndex = index
 			}
 
 		}

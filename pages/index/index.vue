@@ -1,6 +1,6 @@
 <template>
-	<view class="bg-gray" >
-				<view v-for="item in 100">{{item}}会员</view>
+	<view>
+	  测试
 	</view>
 </template>
 
@@ -8,10 +8,9 @@
 	export default {
 		data() {
 			return {
-	
+				
 			};
-		},
-		
+		}
 	}
 </script>
 

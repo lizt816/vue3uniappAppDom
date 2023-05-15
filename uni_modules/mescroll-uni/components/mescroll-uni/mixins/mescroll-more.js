@@ -60,7 +60,9 @@ const MescrollMoreMixin = {
 		},
 		// 切换tab,恢复滚动条位置
 		tabChange(i){
+			// console.log(i,'i');
 			let mescroll = this.getMescroll(i);
+			this.switchTabbar(i)
 			if(mescroll){
 				// 恢复上次滚动条的位置
 				let y = mescroll.getScrollTop()
