@@ -29,8 +29,7 @@
 		"disableScroll": false, 
 		"enablePullDownRefresh" : false,
 		"app-plus": {
-			"scrollIndicator": "none",
-			"bounce" : "none" //可选: 是否禁止iOS回弹和Android触顶触底的弧形阴影, 默认允许 (可配在 'globalStyle')
+			"scrollIndicator": "none"
 		}
 	},
 	"uniIdRouter": {}

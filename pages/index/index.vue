@@ -1,6 +1,10 @@
 <template>
 	<view>
-	  测试
+	 <d-nvabar title="会员" background="#fff">
+		 <template  v-slot:left>
+			 <d-icon></d-icon>
+		 </template >
+	 </d-nvabar>
 	</view>
 </template>
 

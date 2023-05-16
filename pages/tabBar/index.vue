@@ -14,12 +14,12 @@
 		</mescroll-item>
 	</view>
 
-	<view :style="{display: tabIndex === 2 ? '' : 'none'}"  v-show="tabberPageLoadFlag[2]">
+<!-- 	<view :style="{display: tabIndex === 2 ? '' : 'none'}"  v-show="tabberPageLoadFlag[2]">
 		<d-nvabar title="会员" background="#fff"></d-nvabar>
 		<mescroll-item ref="mescrollItem2" :i="2" :index="tabIndex">
 			<vip></vip>
 		</mescroll-item>
-	</view>
+	</view> -->
 	
 	<view :style="{display: tabIndex === 3 ? '' : 'none'}"  v-show="tabberPageLoadFlag[3]">
 		<d-nvabar title="购物车" background="#fff"></d-nvabar>
@@ -38,14 +38,14 @@
 		<d-tabbar 
 		v-model="tabIndex" 
 		:list="tabbarList" 
-		activeColor="#00aaff" 
-		inactiveColor="#000"
+		activeColor="#5555ff" 
+		inactiveColor="#313131"
 		:safeAreaInsetBottom="true" 
-		activeIconColor="tn-cool-bg-color-7" 
+		activeIconColor="#5555ff" 
 		inactiveIconColor="#000" 
 		@change="tabChange"
 		:fontSize="22" 
-		:iconSize="45" 
+		:iconSize="50" 
 		:shadow="false">
 		</d-tabbar>
 
@@ -63,6 +63,7 @@
 	import classification from "./classification.vue" //分类
 	import MescrollItem from "@/components/mescroll-more-item.vue"
 	import MescrollMoreMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-more.js";
+	import unims from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni.js"
 	export default {
 		mixins: [MescrollMoreMixin], // 多个mescroll-body写在子组件时, 则使用mescroll-more.js补充子组件的页面生命周期
 		components: {
@@ -73,6 +74,7 @@
 			cart,
 			classification
 		},
+
 		data() {
 			return {
 				tabs: [{name:'全部'}, {name:'奶粉'}, {name:'面膜'}, {name:'图书'}, {name:'果汁'}],
@@ -98,8 +100,8 @@
 						activeIconColor: '#fff',
 						inactiveIconColor: '#fff',
 						iconSize:50,
-						bg:'#58FFF5',
-						padding:'8rpx',
+						bg:'#5555ff',
+						padding:'8rpx 15rpx',
 						borderRadius:'20rpx'
 						
 					},
@@ -118,6 +120,18 @@
 
 			}
 		},
+		watch:{
+			tabIndex(value,onvaule){
+				if(value==2){
+						uni.navigateTo({
+							url:'/pages/index/index',
+							animationType:"slide-in-bottom"
+						})
+						this.tabIndex = onvaule
+						this.switchTabbar(onvaule)
+				}
+			}
+		},
 		onLoad(options) {
 			const index = Number(options.index || 0)
 			// 根据底部tabbar菜单列表设置对应页面的加载情况
@@ -126,8 +140,13 @@
 			})
 			this.switchTabbar(index)
 		},
+		mounted() {
+			this.inits()
+		},
 		methods: {
-			
+			inits(){
+	
+			},
 			switchTabbar(index) {
 				this._switchTabbarPage(index)
 			},
@@ -141,6 +160,7 @@
 					this.tabberPageLoadFlag[index] = true
 				}
 				this.tabIndex = index
+				
 			}
 
 		}

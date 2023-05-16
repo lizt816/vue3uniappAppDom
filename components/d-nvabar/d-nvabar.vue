@@ -2,7 +2,7 @@
 	<view class="AppBar" :style="fixed==true? `height:${ dsys.height+'px'};`:'height:0px' " @touchmove.stop.prevent="() => {}">
 		<view class="app"  :style="{ height: dsys.height + 'px',background:background }"  >
 			<view class="apppages" :style="{height: dsys.height + 'px', paddingTop: dsys.top + 'px'}">
-				<slot name="left"></slot>
+				<slot name="left">	</slot>
 				<view class="xu-flex1 navbtext text-bold7" :style="{color:color,fontSize:sizi+'rpx'}" >
 				 {{title}}
 				</view>

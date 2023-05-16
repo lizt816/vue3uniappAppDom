@@ -29,10 +29,10 @@
 			return {
 				// 下拉刷新的配置(可选, 绝大部分情况无需配置)
 				downOption: {
-					use: true,
-					offset: 50,
+					use: false,
+					offset:60,
 					beforeEndDelay: 500,
-					textColor: "red",
+					textColor: "#000",
 					bgColor: '#f8f8f8',
 					auto: false
 				},

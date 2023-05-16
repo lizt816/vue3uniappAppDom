@@ -1,19 +1,21 @@
 <template>
 	<view class="bg-gray" >
-				<view v-for="item in 10">{{item}}首页	</view>
+				<view v-for="item in 100">{{item}}首页	</view>
 	</view>
 </template>
 
 <script>
 	export default {
-	
 		data() {
 			return {
-	
+						mescroll:null
 			};
 		},
-		methods:{
+		mounted() {
 			
+		},
+		methods:{
+	
 		}
 	}
 </script>

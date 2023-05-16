@@ -521,7 +521,7 @@
         position: relative;
         
         &__button {
-          margin-bottom: 6rpx;
+          // margin-bottom: 6rpx;
           display: flex;
           align-items: center;
           justify-content: center;
