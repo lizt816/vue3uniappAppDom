@@ -29,7 +29,7 @@
 			return {
 				// 下拉刷新的配置(可选, 绝大部分情况无需配置)
 				downOption: {
-					use: false,
+					use: true,
 					offset:60,
 					beforeEndDelay: 500,
 					textColor: "#000",

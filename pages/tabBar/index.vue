@@ -1,7 +1,41 @@
 <template>
 	<view class="content">
-	<view :style="{display: tabIndex === 0 ? '' : 'none'}" v-show="tabberPageLoadFlag[0]">
-		<d-nvabar title="首页" background="#fff"></d-nvabar>
+	<view :style="{display: tabIndex === 0 ? '' : 'none'}" v-show="tabberPageLoadFlag[0]" class="bg-gray">
+		<d-nvabar title="" background="linear-gradient(93deg, #f7f7f7, #f5e9f0)">
+			<template  v-slot:left>
+						 <d-icon type="more-horizontal" size="50" bold="900" class="= tn-margin-right-xs"></d-icon>
+			</template >
+			<template  v-slot:content>
+				<view class="bg tn-flex-1  padding-lr-sm  tn-flex-center  tn-flex justify-between" style="border-radius: 100rpx;padding-top: 15rpx;padding-bottom: 15rpx;">
+					<view class="flex tn-flex-1 ">
+						<d-icon type="search" size="40" color="#999"></d-icon>
+						<view class="tn-margin-left-xs lines-gray tn-flex-1  ">
+							<swiper  :vertical="true" circular autoplay  disable-touch easing-function="easeOutCubic">
+								<swiper-item class="text-cut ">
+									鞋子鞋子鞋子鞋子鞋子鞋子鞋子鞋子鞋子鞋子鞋子
+								</swiper-item>
+								<swiper-item class="text-cut ">
+								
+								手机手机手机手机手机手机手机
+								</swiper-item>
+								<swiper-item class="text-cut "> 
+									
+									衣服衣服衣服衣服衣服
+								</swiper-item>
+							</swiper>
+						</view>
+					</view>
+					<d-icon type="scan" size="40" color="#999"></d-icon>
+				</view>
+			</template >
+			<template  v-slot:bar>
+				<view class="tn-flex">
+					<d-icon type="vip-text" size="50" class="tn-margin-left-xs tn-margin-right-xs"></d-icon>
+					<d-icon type="sing" size="50" class="tn-margin-left-xs tn-margin-right-xs"></d-icon>
+				</view>
+	
+			</template >
+		</d-nvabar>
 		<mescroll-item ref="mescrollItem0" :i="0" :index="tabIndex" >
 				<home></home>
 		</mescroll-item>
@@ -34,14 +68,13 @@
 			<my></my>
 		</mescroll-item>
 	</view>
-	
 		<d-tabbar 
 		v-model="tabIndex" 
 		:list="tabbarList" 
 		activeColor="#5555ff" 
 		inactiveColor="#313131"
 		:safeAreaInsetBottom="true" 
-		activeIconColor="#5555ff" 
+		activeIconColor="tn-cool-bg-color-17" 
 		inactiveIconColor="#000" 
 		@change="tabChange"
 		:fontSize="22" 
@@ -100,8 +133,8 @@
 						activeIconColor: '#fff',
 						inactiveIconColor: '#fff',
 						iconSize:50,
-						bg:'#5555ff',
-						padding:'8rpx 15rpx',
+						bg:'repeating-linear-gradient(45deg, #892fe8, #58FFF5)',
+						padding:'5rpx 15rpx',
 						borderRadius:'20rpx'
 						
 					},
@@ -174,10 +207,25 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center; */
-		height: 100%;
+		/* height: 100%; */
 	}
 
 	.custom-tabbar-page {
 		/* height: calc(100vh - (100rpx + env(safe-area-inset-bottom) / 2)); */
+	}
+	
+	.bg{
+		background: linear-gradient(110deg, #f7dcdc, #f9b9df);
+		
+	}
+	uni-swiper{
+		height: 35rpx !important;
+	}
+	.active_class{
+		opacity: 0;
+	}
+	.tem{
+		opacity: 1;
+		transition: all .5s;
 	}
 </style>

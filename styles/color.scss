@@ -520,7 +520,9 @@
 .tn-cool-bg-color-16 {
   @include getGradientColor($tn-cool-bg-color-16-start, $tn-cool-bg-color-16-end);
 }
-
+.tn-cool-bg-color-17 {
+  @include getGradientColor($tn-cool-bg-color-17-start, $tn-cool-bg-color-17-end);
+}
 .tn-cool-bg-image::after {
   content: " ";
   position: absolute;
