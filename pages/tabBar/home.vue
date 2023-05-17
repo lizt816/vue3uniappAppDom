@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-	<button @click="goos">点击</button>
+	<button @click="goos" type="primary">点击</button>
 	<mys ref="toast"></mys>
 	</view>
 </template>
@@ -21,7 +21,7 @@
 
 		methods: {
 			goos(){
-				this.$refs.toast.show({model:'load'})
+				this.$refs.toast.show({model:'error',wait:20000000})
 			},
 			swiperChange(e) {
 				this.selectedCardIndex = e.detail.current

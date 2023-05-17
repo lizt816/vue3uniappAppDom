@@ -1,18 +1,16 @@
 <template>
 	<view>
 		<view v-if="show_dev" @click.stop.prevent="maskClick" :class="[mask?'mask':'']"
-			class="tm-message fixed t-0 l-0 fulled fulled-height flex-center">
-			<view :class="[black_dev?'black bk':'',clickOverlay?'clickOverlay':'']" class="tm-message-body  round-6 pa-24 flex-center shadow-24 ">
-				<view class=" flex-center flex-col">
-					<view :class="[
-						model,
-						
-						]"><text class="iconfont" style="font-size: 54rpx;"
-							:class="[ `text-${color_tmeme[model]}`,icon_dev||icon[model],black_dev?'text-white':'']"></text>
+			class="tm-message fixed  flex align-center justify-center">
+			<view :class="[black_dev?'black bk':'',clickOverlay?'clickOverlay':'']" class="tm-message-body  round-6 pa-24 flex align-center justify-center shadow-24 ">
+				<view class=" flex align-center justify-center flex-direction">
+					<view :class="[model,]">
+						<text class="tn-icon" style="font-size: 54rpx;font-weight: bold;":class="[ `text-${color_tmeme[model]}`,icon_dev||icon[model],black_dev?'text-whites':'']">
+						</text>
 					</view>
-					<view class="pt-12 text-align-center">
+					<view class="padding-top-xs text-align-center">
 						<text class="text-size-n text-align-center  "
-							:class="[black_dev?`text-${color_tmeme[model]||color_tmeme}`+' text-white bk':`text-grey-darken-5`]">
+							:class="[black_dev?`text-${color_tmeme[model]||color_tmeme}`+' text-whites bk':`text-grey-darken-5`]">
 							{{label_dev||label[model]}}
 						</text>
 					</view>
@@ -52,9 +50,9 @@
 				type: Object,
 				default: () => {
 					return {
-						load: 'icon-loading',
-						error: 'icon-times-circle',
-						info: 'icon-info-circle',
+						load: 'tn-icon-loading',
+						error: 'tn-icon-close-circle',
+						info: 'tn-icon-tips',
 						warn: 'icon-exclamation-circle',
 						quest: 'icon-question-circle',
 						success: 'icon-check-circle',
@@ -81,7 +79,7 @@
 			// 暗黑
 			black: {
 				type: Boolean | String,
-				default: null
+				default: true
 			},
 			// 跟随主题色的改变而改变。
 			fllowTheme: {
@@ -104,8 +102,6 @@
 				if (this.colors !== null && this.colors && this.fllowTheme) {
 						let cos = 'red';
 						let co={...this.color,info:cos,quest:cos,load:cos,wait:cos};
-						
-						
 					return co;
 				}
 				return this.color;
@@ -128,10 +124,19 @@
 		},
 		methods: {
 			async anifeed(){
-				
 				this.clickOverlay = true;
-				// await uni.$tm.sleep(50)
+				await this.sleep(50)
 				this.clickOverlay = false;
+			},
+			sleep(wait=500){
+				let timid = null;
+				if(wait==0) return Promise.resolve(true)
+				clearTimeout(timid);
+				return new Promise((res,rej)=>{
+					timid = setTimeout(function() {
+						res();
+					}, wait);
+				})
 			},
 			//{label,model,icon,mask,wait,black}
 			show() {
@@ -170,7 +175,6 @@
 				}
 			},
 			async maskClick(){
-				
 				await this.anifeed();
 			},
 			hide() {
@@ -178,7 +182,6 @@
 				clearTimeout(this.timeId);
 				this.mask = false;
 				this.label_dev = '';
-				this.model = 'info';
 				this.model = 'info';
 				this.icon_dev = '';
 				this.black_dev = this.black_tmeme;
@@ -219,11 +222,11 @@
 			}
 
 			.error {
-				animation: error 1.5s infinite linear;
+				animation: warn 0.5s infinite linear;
 			}
 
 			.info {
-				animation: info 0.5s linear;
+				animation: warn 0.5s  infinite linear;
 			}
 
 			.warn {
@@ -248,11 +251,49 @@
 		}
 	}
 
-
-
-
-
-
+	.fixed{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+	}
+	.round-6{
+		border-radius:24rpx;
+	} 
+	
+	.pa-24{
+		padding: 24rpx;
+	}
+	.bk{
+		box-shadow: none!important;
+	}
+	.text-whites {
+		color:	#f2f2f2!important ;
+	}
+	.text-grey-darken-4{
+		color: #212121 !important;
+	}
+	.text-primary{
+		color: rgba(59,92,240,1);
+	}
+	.text-red {
+	    color: rgba(244, 67, 54, 1);
+	}
+	.text-green {
+	    color: #4caf50;
+	}
+	.text-pink {
+	    color: rgba(233,30,99,1);
+	}
+	
+	.text-orange {
+	    color: #ff9800;
+	}
+	.shadow-24{
+		box-shadow:0 28.8rpx 72rpx rgba(0,0,0,.08);
+	}
+	
 	@keyframes outin {
 		0% {
 			transform: scale(0.64)

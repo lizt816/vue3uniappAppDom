@@ -80,7 +80,7 @@
 		methods: {
 			$_click(e) {
 				this.$emit('click', e)
-				this.$d.goBack()
+				// this.$d.goBack()
 			}
 		}
 	}

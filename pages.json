@@ -30,7 +30,8 @@
 		"disableScroll": false, 
 		"enablePullDownRefresh" : false,
 		"app-plus": {
-			"scrollIndicator": "none"
+			"scrollIndicator": "none",
+			"bounce": "horizontal"
 		}
 	},
 	"uniIdRouter": {}

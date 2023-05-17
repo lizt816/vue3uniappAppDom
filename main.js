@@ -4,6 +4,8 @@ import App from './App'
 import Vue from 'vue'
 import './uni.promisify.adaptor'
 import $d from "utlis/index.js"
+import mescrollBody from "@/components/mescroll-uni/components/mescroll-body/mescroll-body.vue"
+Vue.component('mescrollBody',mescrollBody)
 Vue.prototype.$d = $d
 Vue.config.productionTip = false
 App.mpType = 'app'

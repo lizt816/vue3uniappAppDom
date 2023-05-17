@@ -95,8 +95,8 @@
 	import cart from "./cart.vue" //购物车
 	import classification from "./classification.vue" //分类
 	import MescrollItem from "@/components/mescroll-more-item.vue"
-	import MescrollMoreMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-more.js";
-	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
+	import MescrollMoreMixin from "@/components/mescroll-uni/components/mescroll-uni/mixins/mescroll-more.js";
+	import MescrollMixin from "@/components/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
 	export default {
 		mixins: [MescrollMixin,MescrollMoreMixin], // 多个mescroll-body写在子组件时, 则使用mescroll-more.js补充子组件的页面生命周期
 		components: {
@@ -107,7 +107,6 @@
 			cart,
 			classification
 		},
-
 		data() {
 			return {
 				tabs: [{name:'全部'}, {name:'奶粉'}, {name:'面膜'}, {name:'图书'}, {name:'果汁'}],
@@ -149,7 +148,7 @@
 						inactiveIcon: 'computer',
 					}
 				],
-
+				mescroll:null
 
 			}
 		},
@@ -178,7 +177,8 @@
 		},
 		methods: {
 			inits(){
-	
+						// this.$refs.mescrollItem0.mescrollInit
+					console.log(	this.mescroll,'mescrollItem4');
 			},
 			switchTabbar(index) {
 				this._switchTabbarPage(index)

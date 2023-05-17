@@ -11,8 +11,8 @@
 </template>
 
 <script>
-	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
-	import MescrollMoreItemMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-more-item.js";
+	import MescrollMixin from "@/components/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
+	import MescrollMoreItemMixin from "@/components/mescroll-uni/components/mescroll-uni/mixins/mescroll-more-item.js";
 	export default {
 		mixins: [MescrollMixin, MescrollMoreItemMixin], // 注意此处还需使用MescrollMoreItemMixin (必须写在MescrollMixin后面)
 		props: {
@@ -30,7 +30,7 @@
 				// 下拉刷新的配置(可选, 绝大部分情况无需配置)
 				downOption: {
 					use: true,
-					offset:60,
+					offset:40,
 					beforeEndDelay: 500,
 					textColor: "#000",
 					bgColor: '#f8f8f8',
@@ -45,31 +45,36 @@
 						src: ""
 					}
 				},
+				mescroll:null
+			}
+		},
+		watch:{
+			'index':{
+				handler(val){
+					console.log(val);
+					// this.mescroll.endErr()
+					// this.mescroll.endDownScroll()
+				},
+				immediate:false
 			}
 		},
 		methods: {
-		// async	downCallback(page){
-		// 			// page.optDown.use  = true
-		// 			console.log(page,"12");
-		// 			// setTimeout( ()=>{
-		// 			// 		this.mescroll.endDownScroll()
-		// 			// },500)
-		// 			// if(this.index==0){
-		// 			// 	// page.optDown.use = false
-		// 			// 	await	this.mescroll.endDownScroll()
-		// 			// }else{
-		// 			// 	setTimeout( ()=>{
-		// 			// 		this.mescroll.endDownScroll()
-		// 			// 	},500)
-		// 			// 	// page.optDown.use = false
-		// 			// 	// this.mescroll.endDownScroll()
-		// 			// }
-		// 	},
+			mescrollInit(mescroll,index){
+				console.log(mescroll);
+				this.mescroll = mescroll
+			},
+		async	downCallback(mescroll){
+					// page.optDown.use  = true
+						setTimeout( ()=>{
+							this.mescroll.endSuccess()
+							this.mescroll.endDownScroll()
+						},500)
+			},
 			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
 			upCallback(page) {
 				// this.i: 每个tab页的专属下标
 				// this.index: 当前tab的下标
-			
+				this.mescroll.endSuccess(1)
 			},
 			//点击空布局按钮的回调
 			emptyClick() {
