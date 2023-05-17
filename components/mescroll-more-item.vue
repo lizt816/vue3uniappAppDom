@@ -29,7 +29,7 @@
 			return {
 				// 下拉刷新的配置(可选, 绝大部分情况无需配置)
 				downOption: {
-					use: false,
+					use: true,
 					offset:60,
 					beforeEndDelay: 500,
 					textColor: "#000",
@@ -47,13 +47,24 @@
 				},
 			}
 		},
-
 		methods: {
-			// downCallback(page){
-			// 	// this.mescroll.triggerDownScroll()
-			// console.log(page);
-			// this.downOption.use = false
-			// },
+		// async	downCallback(page){
+		// 			// page.optDown.use  = true
+		// 			console.log(page,"12");
+		// 			// setTimeout( ()=>{
+		// 			// 		this.mescroll.endDownScroll()
+		// 			// },500)
+		// 			// if(this.index==0){
+		// 			// 	// page.optDown.use = false
+		// 			// 	await	this.mescroll.endDownScroll()
+		// 			// }else{
+		// 			// 	setTimeout( ()=>{
+		// 			// 		this.mescroll.endDownScroll()
+		// 			// 	},500)
+		// 			// 	// page.optDown.use = false
+		// 			// 	// this.mescroll.endDownScroll()
+		// 			// }
+		// 	},
 			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
 			upCallback(page) {
 				// this.i: 每个tab页的专属下标

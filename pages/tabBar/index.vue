@@ -63,9 +63,9 @@
 	import classification from "./classification.vue" //分类
 	import MescrollItem from "@/components/mescroll-more-item.vue"
 	import MescrollMoreMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-more.js";
-	import unims from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni.js"
+	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
 	export default {
-		mixins: [MescrollMoreMixin], // 多个mescroll-body写在子组件时, 则使用mescroll-more.js补充子组件的页面生命周期
+		mixins: [MescrollMixin,MescrollMoreMixin], // 多个mescroll-body写在子组件时, 则使用mescroll-more.js补充子组件的页面生命周期
 		components: {
 			MescrollItem,
 			my,
@@ -122,7 +122,7 @@
 		},
 		watch:{
 			tabIndex(value,onvaule){
-				if(value==2){
+			if(value==2){
 						uni.navigateTo({
 							url:'/pages/index/index',
 							animationType:"slide-in-bottom"
