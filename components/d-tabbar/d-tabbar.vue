@@ -74,10 +74,14 @@
 					  }"
 					></image>
 					<view  v-else 
-					 class="tn-tabbar__content__item__icon "
+					 class="tn-tabbar__content__item__icon tn-tabbar__content_Class"
 					 :class="[`tn-icon-${elIcon(index)}`,elIconColor(index, false)]" 
 					 :style="{ fontSize: `${item.iconSize || iconSize}rpx`,
 					  color: elIconColor(index),background:item.bg,padding:item.padding,borderRadius:item.borderRadius }"
+					  hover-class="hoverClass"
+					  :hover-start-time="100"
+					  hover-stop-propagation
+					  :hover-stay-time="200"
 					 >
 						</view>
 				</view>
@@ -555,7 +559,7 @@
         }
         
         &__icon {
-          
+          position: relative;
           &--clip {
             -webkit-background-clip: text;
             color: transparent !important;
@@ -624,6 +628,28 @@
       transform: translateX(-50%) translateY(0) scale(1);
     }
   }
-
+	.hoverClass{
+		// opacity:.15;
+		// background-color: $uni-bg-color-hover;
+		// background: rgba(222, 222, 222, 0.1) !important;
+		// transition: all .3s; 
+	}
+	
+	.tn-tabbar__content_Class::after{
+			position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    width: 100%;
+		    height: 100%;
+		    border: inherit;
+		    border-radius: inherit;
+		    -webkit-transform: translate(-50%,-50%);
+		    transform: translate(-50%,-50%);
+		    opacity: 0;
+		    content: " ";
+		    background-color: #000;
+		    border-color: #000;
+			z-index: 999;
+	}
   /* 点击动画 end */
 </style>

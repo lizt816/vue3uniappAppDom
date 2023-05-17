@@ -1,5 +1,5 @@
 <template>
-	<view :class="[prefixClass+type]" :style="setStyle" @tap="$_click" class="Soothing" hover-stop-propagation :hover-class="hoverClass" :hover-start-time="100" :hover-stay-time="100"></view>
+	<view :class="[prefixClass+type]" :style="setStyle" @tap="$_click" class="tn-icon flex align-center" hover-stop-propagation :hover-class="hoverClass" :hover-start-time="100" :hover-stay-time="100"></view>
 </template>
 
 <script>

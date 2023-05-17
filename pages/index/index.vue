@@ -5,6 +5,7 @@
 			 <d-icon></d-icon>
 		 </template >
 	 </d-nvabar>
+	 <!-- <view></view> -->
 	</view>
 </template>
 
