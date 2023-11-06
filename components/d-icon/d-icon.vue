@@ -47,7 +47,7 @@
 			 */
 			size: {
 				type: [Number, String],
-				default: '40'
+				default: '50'
 			},
 			/**
 			 * 是否加粗

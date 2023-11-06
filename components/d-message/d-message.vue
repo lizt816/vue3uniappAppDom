@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<view v-if="show_dev" @click.stop.prevent="maskClick" :class="[mask?'mask':'']"
-			class="tm-message fixed  flex align-center justify-center">
+			class="tm-message fixed  flex align-center justify-center"  @touchmove.stop.prevent="() => {}">
 			<view :class="[black_dev?'black bk':'',clickOverlay?'clickOverlay':'']" class="tm-message-body  round-6 pa-24 flex align-center justify-center shadow-24 ">
 				<view class=" flex align-center justify-center flex-direction">
-					<view :class="[model,]">
+					<view :class="[model]">
 						<text class="tn-icon" style="font-size: 54rpx;font-weight: bold;":class="[ `text-${color_tmeme[model]}`,icon_dev||icon[model],black_dev?'text-whites':'']">
 						</text>
 					</view>
@@ -23,13 +23,21 @@
 <script>
 	/**
 	 * 提示框
+	 * label 默认对应的类型提示文字
 	 * @property {Object} color = [] 默认对应的类型主题色
 	 * @property {Object} icon = [] 默认对应的类型图标
 	 * @property {Object} label = [] 默认对应的类型提示文字
 	 * @property {Boolean} black = [] 默认false,是否使用暗黑主题。
+	 * @property {String} load 加载中。
+	 * @property {String} error 错误。
+	 * @property {String} info 提示。
+	 * @property {String} warn 警告。
+	 * @property {String} quest 疑问。
+	 * @property {String} success 成功。
+	 * @property {String} wait 等待中。
 	 */
 	export default {
-		name: 'tm-message',
+		name: 'd-message',
 		props: {
 			color: {
 				type: Object,
@@ -53,11 +61,11 @@
 						load: 'tn-icon-loading',
 						error: 'tn-icon-close-circle',
 						info: 'tn-icon-tips',
-						warn: 'icon-exclamation-circle',
-						quest: 'icon-question-circle',
-						success: 'icon-check-circle',
-						disabled: 'icon-ban',
-						wait: 'icon-clock',
+						warn: 'tn-icon-warning',
+						quest: 'tn-icon-help',
+						success: 'tn-icon-success-circle',
+						disabled: 'tn-icon-notice-no',
+						wait: 'tn-icon-time',
 					}
 				}
 			},
@@ -79,7 +87,7 @@
 			// 暗黑
 			black: {
 				type: Boolean | String,
-				default: true
+				default: null
 			},
 			// 跟随主题色的改变而改变。
 			fllowTheme: {
@@ -125,7 +133,7 @@
 		methods: {
 			async anifeed(){
 				this.clickOverlay = true;
-				await this.sleep(50)
+				await this.sleep(100)
 				this.clickOverlay = false;
 			},
 			sleep(wait=500){
@@ -150,7 +158,6 @@
 					black: this.black_tmeme
 				};
 				let arg = arguments[0] ? {...def,...arguments[0]} : def;
-				console.log(arguments,'arguments');
 				const {
 					label,
 					model,
@@ -192,15 +199,16 @@
 
 <style lang="scss" scoped>
 	.tm-message {
-		z-index: 601;
+		// z-index: 601;
+		z-index: 2006;
 		pointer-events: none;
 		background-color: transparent;
-
 		&.mask {
 			backdrop-filter: blur(3px);
 			background-color: rgba(0, 0, 0, 0.3);
 			pointer-events: auto;
 		}
+	
 
 		.tm-message-body {
 			min-width: 110rpx;
@@ -218,7 +226,7 @@
 				animation: none !important;
 			}
 			.load {
-				animation: load 0.5s infinite linear;
+				animation: load 0.6s infinite linear;
 			}
 
 			.error {
